@@ -2353,7 +2353,9 @@ TEST-DIR which specifies the path to the tests relative to the project root."
                                   :test "rebar eunit")
 (projectile-register-project-type 'elixir '("mix.exs")
                                   :compile "mix compile"
-                                  :test "mix test")
+                                  :test "mix test"
+                                  :src-dir "lib"
+                                  :test-dir "test")
 ;; JavaScript
 (projectile-register-project-type 'grunt '("Gruntfile.js")
                                   :compile "grunt"
@@ -2405,18 +2407,26 @@ TEST-DIR which specifies the path to the tests relative to the project root."
 ;; Ruby
 (projectile-register-project-type 'ruby-rspec '("Gemfile" "lib" "spec")
                                   :compile "bundle exec rake"
-                                  :test "bundle exec rspec")
+                                  :test "bundle exec rspec"
+                                  :src-dir "lib"
+                                  :test-dir "spec")
 (projectile-register-project-type 'ruby-test '("Gemfile" "lib" "test")
                                   :compile"bundle exec rake"
-                                  :test "bundle exec rake test")
+                                  :test "bundle exec rake test"
+                                  :src-dir "lib"
+                                  :test-dir "test")
 ;; Rails needs to be registered after npm, otherwise `package.json` makes it `npm`.
 ;; https://github.com/bbatsov/projectile/pull/1191
 (projectile-register-project-type 'rails-test '("Gemfile" "app" "lib" "db" "config" "test")
                                   :compile "bundle exec rails server"
-                                  :test "bundle exec rake test")
+                                  :test "bundle exec rake test"
+                                  :src-dir "lib"
+                                  :test-dir "test")
 (projectile-register-project-type 'rails-rspec '("Gemfile" "app" "lib" "db" "config" "spec")
                                   :compile "bundle exec rails server"
-                                  :test "bundle exec rspec")
+                                  :test "bundle exec rspec"
+                                  :src-dir "lib"
+                                  :test-dir "spec")
 
 (defvar-local projectile-project-type nil
   "Buffer local var for overriding the auto-detected project type.
